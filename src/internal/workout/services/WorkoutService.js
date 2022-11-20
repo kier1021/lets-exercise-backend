@@ -48,9 +48,16 @@ const getWorkoutByWorkoutID = async (workoutID) => {
     return workoutEntity
 }
 
+const getWorkoutByCategoryID = async (categoryID) => {
+    let workoutEntity = await workoutRepo.getWorkoutByCategoryID(categoryID);
+    return workoutEntity
+}
+
+
 
 module.exports = {
     getWorkouts,
     getWorkoutByWorkoutID,
     createWorkout,
+    getWorkoutByCategoryID
 }

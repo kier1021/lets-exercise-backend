@@ -1,9 +1,10 @@
 var Workout = require("../models/Workout");
+var Category = require('../models/Category');
 
 const getWorkouts = async () => {
     try {
         const workouts = await Workout.find()
-            .populate("workout_category");
+            .populate("categories");
         return workouts
     } catch (err) {
         console.error("WorkoutRepository.getWorkouts err:", err)
@@ -34,9 +35,19 @@ const getWorkoutByID = async (id) => {
     }
 }
 
+const getWorkoutByCategoryID = async (id) => {
+    try {
+        const workout = await Workout.find({ categories: id });
+        return workout
+    } catch (err) {
+        console.error("WorkoutRepository.getWorkoutByCategoryID err:", err)
+        throw err
+    }
+}
 
 module.exports = {
     getWorkouts,
     createWorkout,
-    getWorkoutByID
+    getWorkoutByID,
+    getWorkoutByCategoryID
 }

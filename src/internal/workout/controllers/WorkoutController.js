@@ -1,10 +1,9 @@
 
 const workoutService = require('../services/WorkoutService')
 
-const getWorkouts = async (req, res, next) => {
+const getWorkoutByWorkoutID = async (req, res, next) => {
     try {
-
-        let result = await workoutService.getWorkouts()
+        let result = await workoutService.getWorkoutByWorkoutID(req.params.workout_id)
         let response = {
             data: result
         }
@@ -16,9 +15,16 @@ const getWorkouts = async (req, res, next) => {
     }
 }
 
-const getWorkoutByWorkoutID = async (req, res, next) => {
+const getWorkouts = async (req, res, next) => {
     try {
-        let result = await workoutService.getWorkoutByWorkoutID(req.params.workout_id)
+
+        let result;
+        if (req.query.category_id !== undefined) {
+            result = await workoutService.getWorkoutByCategoryID(req.query.category_id)
+        } else {
+            result = await workoutService.getWorkouts()
+        }
+
         let response = {
             data: result
         }
