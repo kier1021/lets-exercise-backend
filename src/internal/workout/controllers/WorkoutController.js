@@ -1,5 +1,4 @@
-
-const workoutService = require('../services/WorkoutService')
+const workoutService = require('../services/WorkoutService');
 
 const getWorkoutByWorkoutID = async (req, res, next) => {
     try {
@@ -10,7 +9,7 @@ const getWorkoutByWorkoutID = async (req, res, next) => {
 
         res.json(response);
     } catch (err) {
-        console.error(`Error while getting programming languages`, err.message);
+        console.error(`Error while getting workout by ID`, err.message);
         next(err);
     }
 }

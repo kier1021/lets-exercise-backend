@@ -7,7 +7,7 @@ const createCategory = async (req, res, next) => {
 
         res.json({ message: 'Category successfully created!' });
     } catch (err) {
-        console.error(`Error while creating category`, err.message);
+        console.error(`Error while creating category`, err);
         next(err);
     }
 }

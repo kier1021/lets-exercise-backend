@@ -33,8 +33,7 @@ app.use('/category', categoryRouter);
 
 // Error handler middleware
 app.use((err, req, res, next) => {
-    const statusCode = err.statusCode || 500;
-    console.error(err.message, err.stack);
+    const statusCode = err.status_code || 500;
     res.status(statusCode).json({ 'message': err.message });
 
     return;
